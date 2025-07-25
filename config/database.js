@@ -105,7 +105,7 @@ class Database {
         console.error('创建博客表失败:', err);
       } else {
         // 插入默认博客文章
-        this.insertDefaultBlogPosts();
+        // this.insertDefaultBlogPosts();
       }
     });
   }
