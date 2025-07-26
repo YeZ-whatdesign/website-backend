@@ -162,6 +162,20 @@ router.get('/training-applications', authenticateToken, (req, res) => {
   );
 });
 
+// 获取所有求职申请
+router.get('/job-applications', authenticateToken, (req, res) => {
+  db.getDb().all(
+    'SELECT * FROM job_applications ORDER BY created_at DESC',
+    [],
+    (err, rows) => {
+      if (err) {
+        return res.status(500).json({ error: '数据库错误' });
+      }
+      res.json(rows);
+    }
+  );
+});
+
 // 删除联系表单
 router.delete('/contacts/:id', authenticateToken, (req, res) => {
   const { id } = req.params;
@@ -189,6 +203,27 @@ router.delete('/training-applications/:id', authenticateToken, (req, res) => {
 
   db.getDb().run(
     'DELETE FROM training_applications WHERE id = ?',
+    [id],
+    function(err) {
+      if (err) {
+        return res.status(500).json({ error: '数据库错误' });
+      }
+
+      if (this.changes === 0) {
+        return res.status(404).json({ error: '记录不存在' });
+      }
+
+      res.json({ message: '删除成功' });
+    }
+  );
+});
+
+// 删除求职申请
+router.delete('/job-applications/:id', authenticateToken, (req, res) => {
+  const { id } = req.params;
+
+  db.getDb().run(
+    'DELETE FROM job_applications WHERE id = ?',
     [id],
     function(err) {
       if (err) {

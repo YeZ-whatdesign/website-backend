@@ -87,6 +87,20 @@ class Database {
       )
     `);
 
+    // 创建求职申请表
+    this.db.run(`
+      CREATE TABLE IF NOT EXISTS job_applications (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        degree TEXT,
+        phone TEXT,
+        email TEXT NOT NULL,
+        message TEXT,
+        position TEXT NOT NULL,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+      )
+    `);
+
     // 创建博客表
     this.db.run(`
       CREATE TABLE IF NOT EXISTS blog_posts (

@@ -23,7 +23,7 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install -y curl wget git build-essential
 
 # 安装Node.js 18.x
-curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+curl -fsSL //deb.nodesource.com/setup_18.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
 # 验证安装

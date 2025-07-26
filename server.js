@@ -37,6 +37,7 @@ app.use('/api/cms', require('./routes/cms'));
 app.use('/api/contact', require('./routes/contact'));
 app.use('/api/training', require('./routes/training'));
 app.use('/api/blog', require('./routes/blog'));
+app.use('/api/jobs', require('./routes/jobs'));
 
 // 健康检查
 app.get('/api/health', (req, res) => {
